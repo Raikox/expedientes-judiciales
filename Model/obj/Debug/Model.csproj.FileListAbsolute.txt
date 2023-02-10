@@ -1,0 +1,12 @@
+D:\VisualStudio\eoArchivo\Model\bin\Debug\Model.dll.config
+D:\VisualStudio\eoArchivo\Model\bin\Debug\Model.dll
+D:\VisualStudio\eoArchivo\Model\bin\Debug\Model.pdb
+D:\VisualStudio\eoArchivo\Model\bin\Debug\EntityFramework.dll
+D:\VisualStudio\eoArchivo\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\VisualStudio\eoArchivo\Model\bin\Debug\EntityFramework.xml
+D:\VisualStudio\eoArchivo\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\VisualStudio\eoArchivo\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\VisualStudio\eoArchivo\Model\obj\Debug\Model.dll
+D:\VisualStudio\eoArchivo\Model\obj\Debug\Model.pdb
+D:\VisualStudio\eoArchivo\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\VisualStudio\eoArchivo\Model\obj\Debug\Model.csproj.CopyComplete

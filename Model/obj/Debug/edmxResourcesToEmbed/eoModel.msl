@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eoExpedientesModelStoreContainer" CdmEntityContainer="eoExpedientesEntities">
+    <EntitySetMapping Name="ambiente_abt">
+      <EntityTypeMapping TypeName="eoExpedientesModel.ambiente_abt">
+        <MappingFragment StoreEntitySet="ambiente_abt">
+          <ScalarProperty Name="abt_id" ColumnName="abt_id" />
+          <ScalarProperty Name="abt_nombre" ColumnName="abt_nombre" />
+          <ScalarProperty Name="abt_descripcion" ColumnName="abt_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="caja_cja">
+      <EntityTypeMapping TypeName="eoExpedientesModel.caja_cja">
+        <MappingFragment StoreEntitySet="caja_cja">
+          <ScalarProperty Name="cja_id" ColumnName="cja_id" />
+          <ScalarProperty Name="cja_numero" ColumnName="cja_numero" />
+          <ScalarProperty Name="rto_id" ColumnName="rto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudad_cdd">
+      <EntityTypeMapping TypeName="eoExpedientesModel.ciudad_cdd">
+        <MappingFragment StoreEntitySet="ciudad_cdd">
+          <ScalarProperty Name="cdd_id" ColumnName="cdd_id" />
+          <ScalarProperty Name="cdd_nombre" ColumnName="cdd_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estado_edo">
+      <EntityTypeMapping TypeName="eoExpedientesModel.estado_edo">
+        <MappingFragment StoreEntitySet="estado_edo">
+          <ScalarProperty Name="edo_id" ColumnName="edo_id" />
+          <ScalarProperty Name="edo_nombre" ColumnName="edo_nombre" />
+          <ScalarProperty Name="edo_descripcion" ColumnName="edo_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expediente_ambiente_ea">
+      <EntityTypeMapping TypeName="eoExpedientesModel.expediente_ambiente_ea">
+        <MappingFragment StoreEntitySet="expediente_ambiente_ea">
+          <ScalarProperty Name="ea_id" ColumnName="ea_id" />
+          <ScalarProperty Name="ea_fecha" ColumnName="ea_fecha" />
+          <ScalarProperty Name="ea_motivo" ColumnName="ea_motivo" />
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="abt_id" ColumnName="abt_id" />
+          <ScalarProperty Name="prl_id" ColumnName="prl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expediente_aval_ea">
+      <EntityTypeMapping TypeName="eoExpedientesModel.expediente_aval_ea">
+        <MappingFragment StoreEntitySet="expediente_aval_ea">
+          <ScalarProperty Name="ea_id" ColumnName="ea_id" />
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="rto_id" ColumnName="rto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expediente_demandado_ed">
+      <EntityTypeMapping TypeName="eoExpedientesModel.expediente_demandado_ed">
+        <MappingFragment StoreEntitySet="expediente_demandado_ed">
+          <ScalarProperty Name="ed_id" ColumnName="ed_id" />
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="rto_id" ColumnName="rto_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expediente_estado_ee">
+      <EntityTypeMapping TypeName="eoExpedientesModel.expediente_estado_ee">
+        <MappingFragment StoreEntitySet="expediente_estado_ee">
+          <ScalarProperty Name="ee_id" ColumnName="ee_id" />
+          <ScalarProperty Name="ee_fecha" ColumnName="ee_fecha" />
+          <ScalarProperty Name="ee_motivo" ColumnName="ee_motivo" />
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="edo_id" ColumnName="edo_id" />
+          <ScalarProperty Name="prl_id" ColumnName="prl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="expediente_exp">
+      <EntityTypeMapping TypeName="eoExpedientesModel.expediente_exp">
+        <MappingFragment StoreEntitySet="expediente_exp">
+          <ScalarProperty Name="exp_id" ColumnName="exp_id" />
+          <ScalarProperty Name="exp_numero" ColumnName="exp_numero" />
+          <ScalarProperty Name="exp_orden" ColumnName="exp_orden" />
+          <ScalarProperty Name="rto_id" ColumnName="rto_id" />
+          <ScalarProperty Name="mra_id" ColumnName="mra_id" />
+          <ScalarProperty Name="jdo_id" ColumnName="jdo_id" />
+          <ScalarProperty Name="cja_id" ColumnName="cja_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="juzgado_jdo">
+      <EntityTypeMapping TypeName="eoExpedientesModel.juzgado_jdo">
+        <MappingFragment StoreEntitySet="juzgado_jdo">
+          <ScalarProperty Name="jdo_id" ColumnName="jdo_id" />
+          <ScalarProperty Name="jdo_nombre" ColumnName="jdo_nombre" />
+          <ScalarProperty Name="cdd_id" ColumnName="cdd_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materia_mra">
+      <EntityTypeMapping TypeName="eoExpedientesModel.materia_mra">
+        <MappingFragment StoreEntitySet="materia_mra">
+          <ScalarProperty Name="mra_id" ColumnName="mra_id" />
+          <ScalarProperty Name="mra_nombre" ColumnName="mra_nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personal_prl">
+      <EntityTypeMapping TypeName="eoExpedientesModel.personal_prl">
+        <MappingFragment StoreEntitySet="personal_prl">
+          <ScalarProperty Name="prl_id" ColumnName="prl_id" />
+          <ScalarProperty Name="prl_apellidos" ColumnName="prl_apellidos" />
+          <ScalarProperty Name="prl_nombres" ColumnName="prl_nombres" />
+          <ScalarProperty Name="prl_dni" ColumnName="prl_dni" />
+          <ScalarProperty Name="prl_celular" ColumnName="prl_celular" />
+          <ScalarProperty Name="prl_correo" ColumnName="prl_correo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="registro_rto">
+      <EntityTypeMapping TypeName="eoExpedientesModel.registro_rto">
+        <MappingFragment StoreEntitySet="registro_rto">
+          <ScalarProperty Name="rto_id" ColumnName="rto_id" />
+          <ScalarProperty Name="rto_apellidos" ColumnName="rto_apellidos" />
+          <ScalarProperty Name="rto_nombres" ColumnName="rto_nombres" />
+          <ScalarProperty Name="rto_color" ColumnName="rto_color" />
+          <ScalarProperty Name="tpo_id" ColumnName="tpo_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sesion_ssn">
+      <EntityTypeMapping TypeName="eoExpedientesModel.sesion_ssn">
+        <MappingFragment StoreEntitySet="sesion_ssn">
+          <ScalarProperty Name="ssn_id" ColumnName="ssn_id" />
+          <ScalarProperty Name="ssn_usuario" ColumnName="ssn_usuario" />
+          <ScalarProperty Name="ssn_password" ColumnName="ssn_password" />
+          <ScalarProperty Name="ssn_tipo" ColumnName="ssn_tipo" />
+          <ScalarProperty Name="prl_id" ColumnName="prl_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_tpo">
+      <EntityTypeMapping TypeName="eoExpedientesModel.tipo_tpo">
+        <MappingFragment StoreEntitySet="tipo_tpo">
+          <ScalarProperty Name="tpo_id" ColumnName="tpo_id" />
+          <ScalarProperty Name="tpo_nombre" ColumnName="tpo_nombre" />
+          <ScalarProperty Name="tpo_numero" ColumnName="tpo_numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

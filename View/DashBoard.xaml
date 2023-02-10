@@ -1,0 +1,219 @@
+﻿<Window x:Class="View.DashBoard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:View"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        mc:Ignorable="d" Height="740.608" Width="1490.891" WindowStartupLocation="CenterScreen" 
+        Visibility="Visible" ResizeMode="CanResizeWithGrip" HorizontalAlignment="Center" 
+        VerticalAlignment="Center" WindowStyle="None" >
+
+    <Grid>
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <StackPanel>
+                    <Grid Background="#FF009688" Width="242">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Height="45" Background="#FF009688" Margin="0">
+                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                    DockPanel.Dock="Top" Margin="0,0,16,0"
+                                    IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" HorizontalAlignment="Right" Foreground="#DDFFFFFF" 
+                                    Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				                    CommandParameter="{x:Static Dock.Left}"/>
+                        </DockPanel>
+                        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15,0,0,0" FontSize="16" Grid.Row="1" Foreground="#DDFFFFFF" TextDecorations="Underline" >BIENVENIDO.</TextBlock>
+                        <TextBlock x:Name="txtUsuarioPersonal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,20" Foreground="#DDFFFFFF" FontSize="16" Grid.Row="2" TextWrapping="Wrap">Kevin</TextBlock>
+                    </Grid>
+                    <Button x:Name="ButtonProcesosJudiciales" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="ButtonProcesosJudiciales_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">PROCESOS JUDICIALES</TextBlock>
+                            <materialDesign:PackIcon Kind="Home" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="ButtonEntidadesFinancieras" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="ButtonEntidadesFinancieras_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">CLIENTES</TextBlock>
+                            <materialDesign:PackIcon Kind="Bank" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0"
+                            x:Name="ButtonCiudades" Click="ButtonCiudades_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">CIUDADES</TextBlock>
+                            <materialDesign:PackIcon Kind="Domain" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0"
+                            x:Name="ButtonJuzgados" Click="ButtonJuzgados_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">JUZGADOS</TextBlock>
+                            <materialDesign:PackIcon Kind="Gavel" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}"  Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"                           
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" Height="42" Margin="0"
+                            x:Name="ButtonMaterias" Click="ButtonMaterias_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">MATERIAS</TextBlock>
+                            <materialDesign:PackIcon Kind="Buffer" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnCajas" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnCajas_Click" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">CAJAS EXPEDIENTES</TextBlock>
+                            <materialDesign:PackIcon Kind="Dropbox" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Separator Style="{StaticResource MaterialDesignDarkSeparator}" Height="30" Margin="8,0" VerticalAlignment="Center"/>
+                    <Button x:Name="btnSalirInicio" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnSalirInicio_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">CERRAR SESION</TextBlock>
+                            <materialDesign:PackIcon Kind="ExitToApp" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnAmbiente" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnAmbiente_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">AMBIENTES</TextBlock>
+                            <materialDesign:PackIcon Kind="ViewDashboard" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnPersonal" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnPersonal_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">PERSONAL</TextBlock>
+                            <materialDesign:PackIcon Kind="AccountMultiple" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Button x:Name="btnEstado" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnEstado_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">ESTADOS EXPEDIENTE</TextBlock>
+                            <materialDesign:PackIcon Kind="Altimeter" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                    <Separator x:Name="strFinal" Style="{StaticResource MaterialDesignDarkSeparator}" Height="30" Margin="8,0" VerticalAlignment="Center"/>
+                    <Button x:Name="btnSalirFinal" Style="{StaticResource MaterialDesignFlatButton}"                             
+                            HorizontalAlignment="Left" Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+				            CommandParameter="{x:Static Dock.Left}"
+                            VerticalAlignment="Center" Height="42" Margin="0" Click="btnSalirFinal_Click">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="22*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black">CERRAR SESION</TextBlock>
+                            <materialDesign:PackIcon Kind="ExitToApp" HorizontalAlignment="Right" Height="20" Width="20" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <DockPanel>
+                <materialDesign:ColorZone Padding="16"  Mode="PrimaryMid" Height="45"
+	            MouseLeftButtonDown="ColorZone_MouseLeftButtonDown"  DockPanel.Dock="Top" Margin="0">
+                    <DockPanel Margin="-10,-12,0,-9" >
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right" VerticalAlignment="Top" Margin="0,0,-10,0">
+                            <Button x:Name="btnMinimizar" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Height="23" Margin="0" VerticalAlignment="Top" Background="#FF009688" Click="btnMinimizar_Click" Foreground="{x:Null}" Width="35" Padding="0,4">
+                                <materialDesign:PackIcon Kind="WindowMinimize"  Foreground="Black"/>
+                            </Button>
+                            <Button x:Name="btnMaximizar" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Height="23" Margin="0" VerticalAlignment="Top" Width="35" Background="#FF009688" Click="btnMaximizar_Click" Foreground="{x:Null}" Padding="0,4">
+                                <materialDesign:PackIcon Kind="WindowMaximize"  Foreground="Black"/>
+                            </Button>
+                            <Button x:Name="btnCerrar" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Left" Height="23" Margin="0" VerticalAlignment="Top" Width="35" Background="#FF009688" Click="btnCerrar_Click" Foreground="{x:Null}" Padding="0,4">
+                                <materialDesign:PackIcon Kind="WindowClose"  Foreground="Black"/>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton x:Name="MenuToggleButton" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"                         
+                                  Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"
+				                  CommandParameter="{x:Static Dock.Left}" 
+                                  Width="32"/>
+                        </StackPanel>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Margin="0">EO Línea Cyber</TextBlock>
+                    </DockPanel>
+                </materialDesign:ColorZone>
+
+                <DockPanel LastChildFill="True">
+                    <DockPanel x:Name="dockEscritorio" DockPanel.Dock="Right"/>
+                </DockPanel>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Window>

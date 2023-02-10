@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="View.EstadoExpediente"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" d:DesignWidth="1057" d:DesignHeight="740.45">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="631*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone         
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+	        materialDesign:ShadowAssist.ShadowEdges="Bottom"
+	        VerticalAlignment="Stretch" Margin="14" Background="#FF9E9E9E">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="18,0,0,0" FontSize="18" Height="20">ESTADO EXPEDIENTES</TextBlock>
+                <materialDesign:PackIcon Kind="Altimeter" HorizontalAlignment="Right" Height="24" Width="24" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0" />
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="557*"/>
+                <ColumnDefinition Width="273*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card VerticalAlignment="Stretch" Margin="8,0,8,8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="287*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Registros" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                    <Separator Grid.Row="1" 
+                    Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                    <DataGrid x:Name="tblEstados" Margin="10,8,10,4" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" RowHeight="32">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding edo_id}" />
+                            <DataGridTextColumn Header="ESTADO" Binding="{Binding edo_nombre}" Width="300" MinWidth="150" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="ACCION" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="btnEditar" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEditar_Click" Margin="0,-2,10,0" Height="24" VerticalAlignment="Center" >
+                                                <materialDesign:PackIcon Kind="Pencil"  Foreground="Black"/>
+                                            </Button>
+                                            <!--<Button x:Name="btnEliminar" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEliminar_Click" Height="24" VerticalAlignment="Center" Margin="0,-2,0,0" >
+                                                <materialDesign:PackIcon Kind="DeleteForever"  Foreground="Black"/>
+                                            </Button>-->
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="482*"/>
+                            <ColumnDefinition Width="217*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0" Orientation="Horizontal">
+                            <Label Content="Total estados:" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="txtTotalEstados" Width="40" Margin="5,10,0,0" IsEnabled="False" Background="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                        <Button x:Name="btnNuevo" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Nuevo Registro"                                             
+                            Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,5" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" Padding="1" ScrollViewer.CanContentScroll="True" Click="btnNuevo_Click">
+                            <materialDesign:PackIcon
+		                        Width="24"
+		                        Height="24"
+		                        Kind="plus" />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+
+            <materialDesign:Card VerticalAlignment="Stretch" Margin="0,0,8,8" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="276*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Detalle" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                    <Separator Grid.Row="1" 
+                    Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                </Grid>
+            </materialDesign:Card>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,224 @@
+﻿<UserControl x:Class="View.ProcesosJudicialesEditar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" d:DesignWidth="1057">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="631*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone         
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+	        materialDesign:ShadowAssist.ShadowEdges="Bottom"
+	        VerticalAlignment="Stretch" Margin="14" Background="#FF9E9E9E">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="18,0,0,0" FontSize="18" Height="20">EDITAR PROCESO JUDICIAL</TextBlock>
+                <materialDesign:PackIcon Kind="ScaleBalance" HorizontalAlignment="Right" Height="24" Width="24" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0" />
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="280*"/>
+                    <RowDefinition Height="380*"/>
+                    <RowDefinition Height="75"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="412*"/>
+                    <ColumnDefinition Width="645*"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card	        
+	         VerticalAlignment="Stretch" Margin="0,0,8,8" Grid.Column="1" Grid.RowSpan="2">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="536*"/>
+                                <ColumnDefinition Width="90"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="60"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="200"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="200"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Demandante " Margin="10,8,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="txtDemandante" Margin="18,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+	                    Text="" FontSize="14" Height="42" VerticalAlignment="Center" MaxLength="100" Grid.Row="2" IsEnabled="False">
+                                <materialDesign:HintAssist.Hint >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>Nombre demandante.</TextBlock>
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </TextBox>
+                            <Button x:Name="btnNuevoDemandante" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Asignar Demandante"                                             
+                            Grid.Column="1" HorizontalAlignment="Center" Margin="0" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" RenderTransformOrigin="0.36,2.06" Grid.Row="2" VerticalAlignment="Center" Click="btnNuevoDemandante_Click">
+                                <materialDesign:PackIcon  Width="24" Height="24" Kind="Pencil" />
+                            </Button>
+                            <Label Content="Demandados " Margin="10,8,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom" Grid.Row="3"/>
+                            <Separator Grid.Row="4" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0" Grid.ColumnSpan="2"/>
+                            <DataGrid x:Name="tblDemandados" Margin="10,8,10,4" Grid.Row="5" IsReadOnly="True" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding rto_id}" />
+                                    <DataGridTextColumn Header="ID TIPO" Binding="{Binding tpo_id}" />
+                                    <DataGridTextColumn Header="DEMANDADO" Binding="{Binding demandado_nombre}" Width="300" MinWidth="150" />
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="ACCION" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button x:Name="btnEliminarDemandado" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEliminarDemandado_Click" Height="24" VerticalAlignment="Center" Margin="0,-2,0,0" >
+                                                        <materialDesign:PackIcon Kind="DeleteForever"  Foreground="Black"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button x:Name="btnNuevoDemandado" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Agregar Demandado"                                             
+                            Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" RenderTransformOrigin="0.36,2.06" Grid.Row="5" VerticalAlignment="Bottom" Click="btnNuevoDemandado_Click">
+                                <materialDesign:PackIcon  Width="24" Height="24" Kind="plus" />
+                            </Button>
+                            <Label Content="Avales " Margin="10,8,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom" Grid.Row="6"/>
+                            <Separator Grid.Row="7" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0" Grid.ColumnSpan="2"/>
+                            <DataGrid x:Name="tblAvales" Margin="10,8,10,4" Grid.Row="8" IsReadOnly="True" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding rto_id}" />
+                                    <DataGridTextColumn Header="ID TIPO" Binding="{Binding tpo_id}" />
+                                    <DataGridTextColumn Header="AVAL" Binding="{Binding aval_nombre}" Width="300" MinWidth="150" />
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="ACCION" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.HeaderTemplate>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Button x:Name="btnEliminarAval" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEliminarAval_Click" Height="24" VerticalAlignment="Center" Margin="0,-2,0,0" >
+                                                        <materialDesign:PackIcon Kind="DeleteForever"  Foreground="Black"/>
+                                                    </Button>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button x:Name="btnNuevoAvales" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Agregar Aval"                                             
+                            Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,0,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" RenderTransformOrigin="0.36,2.06" Grid.Row="8" VerticalAlignment="Bottom" Click="btnNuevoAvales_Click">
+                                <materialDesign:PackIcon  Width="24" Height="24" Kind="plus" />
+                            </Button>
+                        </Grid>
+                    </ScrollViewer>
+                </materialDesign:Card>
+
+                <materialDesign:Card	        
+	         VerticalAlignment="Stretch" Margin="8,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>                                
+                            </Grid.RowDefinitions>
+                            <Label Content="Datos Generales" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                            <TextBox x:Name="txtNumero" Margin="18,14,18,15" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+	                        Text="" FontSize="14" Height="42" VerticalAlignment="Center" MaxLength="100" Grid.Row="2">
+                                <materialDesign:HintAssist.Hint >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>N° de expediente.</TextBlock>
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </TextBox>
+                            <ComboBox x:Name="cbxMateria"  materialDesign:HintAssist.Hint="Materia." 
+	                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="3" Margin="18,15,18,14" Padding="0" VerticalAlignment="Center" Height="42"
+                               DisplayMemberPath="mra_nombre" SelectedValuePath="mra_id">
+                            </ComboBox>
+                            <ComboBox x:Name="cbxJuzgado"  materialDesign:HintAssist.Hint="Juzgado." 
+	                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="4" Margin="18,14,18,13" Padding="0" VerticalAlignment="Center" Height="42"
+                               DisplayMemberPath="jdo_full" SelectedValuePath="jdo_id">
+                            </ComboBox>
+                            
+                        </Grid>
+                    </ScrollViewer>
+                </materialDesign:Card>
+
+                <materialDesign:Card	        
+	         VerticalAlignment="Stretch" Margin="8" Grid.Row="1" Grid.Column="0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                                <RowDefinition Height="70"/>
+                               
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Ubicación Expediente" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                            <ComboBox x:Name="cbxEntidad"  materialDesign:HintAssist.Hint="Cliente." 
+	                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="2" Margin="18,0" Padding="0" VerticalAlignment="Center" Height="42"
+                               DisplayMemberPath="ef_nombre" SelectedValuePath="ef_id" SelectionChanged="cbxEntidad_SelectionChanged">
+                            </ComboBox>
+                            <ComboBox x:Name="cbxCaja"  materialDesign:HintAssist.Hint="Caja expediente." 
+	                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="3" Margin="18,0" Padding="0" VerticalAlignment="Center" Height="42"
+                               DisplayMemberPath="cja_numero" SelectedValuePath="cja_id">
+                            </ComboBox>
+                            <TextBox x:Name="txtOrden" PreviewTextInput="NumberValidationTextBox" Margin="18,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+	                        Text="" FontSize="14" Height="42" VerticalAlignment="Center" MaxLength="100" Grid.Row="4">
+                                <materialDesign:HintAssist.Hint >
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock>N° Orden expediente.</TextBlock>
+                                    </StackPanel>
+                                </materialDesign:HintAssist.Hint>
+                            </TextBox>
+                        </Grid>
+                    </ScrollViewer>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Stretch" Margin="8,0,8,8">
+                    <Grid>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <Button x:Name="btnGuardarExpediente" Content="GUARDAR CAMBIOS EXPEDIENTE" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Right" Margin="0,8,8,8" Grid.Row="4" VerticalAlignment="Center" Height="26" Background="{x:Null}" BorderBrush="#FF9E9E9E" Click="btnGuardarExpediente_Click"/>
+                            <Button x:Name="btnCancelarExpediente" Content="CANCELAR" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,8,8,8" Grid.Row="4" VerticalAlignment="Center" Width="112" Height="26" Background="{x:Null}" BorderBrush="#FF9E9E9E" Click="btnCancelarExpediente_Click" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a7204d625fb44799f3332bde4425666" Name="Diagram1">
+        <EntityTypeShape EntityType="eoExpedientesModel.ambiente_abt" Width="1.5" PointX="7.5" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.caja_cja" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.ciudad_cdd" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.estado_edo" Width="1.5" PointX="7.5" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.expediente_ambiente_ea" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.expediente_aval_ea" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.expediente_demandado_ed" Width="1.5" PointX="12.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.expediente_estado_ee" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.expediente_exp" Width="1.5" PointX="7.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.juzgado_jdo" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.materia_mra" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.personal_prl" Width="1.5" PointX="7.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.registro_rto" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.sesion_ssn" Width="1.5" PointX="9.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="eoExpedientesModel.tipo_tpo" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__abt_i__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__caja_cja__rto_id__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__cja_i__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__juzgado_j__cdd_i__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__edo_i__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__exp_i__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__prl_i__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__exp_i__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__rto_i__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__exp_i__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__rto_i__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__exp_i__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__prl_i__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__jdo_i__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__mra_i__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__expedient__rto_i__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__sesion_ss__prl_i__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="eoExpedientesModel.FK__registro___tpo_i__2A4B4B5E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

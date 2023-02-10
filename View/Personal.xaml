@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="View.Personal"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" d:DesignWidth="1057" d:DesignHeight="740.45">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="631*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone         
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+	        materialDesign:ShadowAssist.ShadowEdges="Bottom"
+	        VerticalAlignment="Stretch" Margin="14" Background="#FF9E9E9E">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="18,0,0,0" FontSize="18" Height="20">PERSONAL</TextBlock>
+                <materialDesign:PackIcon Kind="AccountMultiple" HorizontalAlignment="Right" Height="24" Width="24" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0" />
+            </StackPanel>
+        </materialDesign:ColorZone>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="557*"/>
+                <ColumnDefinition Width="273*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:Card VerticalAlignment="Stretch" Margin="8,0,8,8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="287*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="Registros" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                    <Separator Grid.Row="1" 
+                    Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                    <DataGrid x:Name="tblPersonal" Margin="10,8,10,4" Grid.Row="2" IsReadOnly="True" AutoGenerateColumns="False" SelectionChanged="tblPersonal_SelectionChanged" RowHeight="32">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding prl_id}" />
+                            <DataGridTextColumn Header="APELLIDOS" Binding="{Binding prl_apellidos}" Width="250" MinWidth="150" />
+                            <DataGridTextColumn Header="NOMBRES" Binding="{Binding prl_nombres}" Width="100" MinWidth="150" />
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="ACCION" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.HeaderTemplate>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button x:Name="btnEditar" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEditar_Click" Margin="0,-2,10,0" Height="24" VerticalAlignment="Center" >
+                                                <materialDesign:PackIcon Kind="Pencil"  Foreground="Black"/>
+                                            </Button>                                            
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="482*"/>
+                            <ColumnDefinition Width="217*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="0" Orientation="Horizontal">
+                            <Label Content="Personal total:" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="txtTotalPersonal"  Width="40" Margin="5,10,0,0" IsEnabled="False" Background="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                        </StackPanel>
+                        <Button x:Name="btnNuevo" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Nuevo Registro"                                             
+                            Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" Click="btnNuevo_Click">
+                            <materialDesign:PackIcon
+		                        Width="24"
+		                        Height="24"
+		                        Kind="plus" />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+
+            <ScrollViewer Grid.Column="1" Margin="0,0,8,10" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <materialDesign:Card VerticalAlignment="Stretch" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="70*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Detalle" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                        <Label Content="Correo electronico." HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtCorreo" Margin="25,0" Grid.Row="3" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" Text="" IsEnabled="False"/>
+                        <Label Content="Numero celular." HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtCelular" Margin="25,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" Text="" IsEnabled="False"/>
+                        <Label Content="Numero DNI." HorizontalAlignment="Left" Margin="20,0,0,0" Grid.Row="6" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtDni" Margin="25,0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" Text="" IsEnabled="False"/>
+                        <Label Content="Datos de Sesion" Margin="10,0,0,0" Grid.Row="8" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Separator Grid.Row="9" 
+                    Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                        <TextBox x:Name="txtUsuario" Margin="25,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+	                    Text="" FontSize="14" Height="42" VerticalAlignment="Center" Grid.Row="10" MaxLength="20">
+                            <materialDesign:HintAssist.Hint >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Account" />
+                                    <TextBlock>Usuario</TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </TextBox>
+                        <PasswordBox x:Name="txtPassword" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+	                    FontSize="14" Height="42" VerticalAlignment="Center" Grid.Row="11" Margin="25,0" MaxLength="15">
+                            <materialDesign:HintAssist.Hint >
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Lock" />
+                                    <TextBlock><Run Text="Contraseña"/></TextBlock>
+                                </StackPanel>
+                            </materialDesign:HintAssist.Hint>
+                        </PasswordBox>
+                        <ComboBox x:Name="cbxTipo"  materialDesign:HintAssist.Hint="Tipo usuario." 
+	                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="12" Padding="0" VerticalAlignment="Center" Height="42" Margin="25,0"
+                              ItemsSource="{Binding}" DisplayMemberPath="ssn_tipo" SelectedValuePath="ssn_tipo">
+
+                        </ComboBox>
+                        <Button x:Name="btnGuardar" Content="GUARDAR" Style="{StaticResource MaterialDesignFlatButton}" HorizontalAlignment="Right" Margin="0,0,25,16" Grid.Row="13" VerticalAlignment="Center" Height="26" Background="{x:Null}" BorderBrush="#FF9E9E9E" Click="btnGuardar_Click" IsEnabled="False"/>
+
+                    </Grid>
+                </materialDesign:Card>
+            </ScrollViewer>
+            <materialDesign:Snackbar x:Name="SnackbarThree" MessageQueue="{materialDesign:MessageQueue}" />
+        </Grid>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,10 @@
+D:\VisualStudio\eoArchivo\ViewModel\bin\Debug\ViewModel.dll
+D:\VisualStudio\eoArchivo\ViewModel\bin\Debug\ViewModel.pdb
+D:\VisualStudio\eoArchivo\ViewModel\bin\Debug\Model.dll
+D:\VisualStudio\eoArchivo\ViewModel\bin\Debug\Model.pdb
+D:\VisualStudio\eoArchivo\ViewModel\bin\Debug\Model.dll.config
+D:\VisualStudio\eoArchivo\ViewModel\obj\Debug\ViewModel.csproj.CoreCompileInputs.cache
+D:\VisualStudio\eoArchivo\ViewModel\obj\Debug\ViewModel.dll
+D:\VisualStudio\eoArchivo\ViewModel\obj\Debug\ViewModel.pdb
+D:\VisualStudio\eoArchivo\ViewModel\obj\Debug\ViewModel.csprojAssemblyReference.cache
+D:\VisualStudio\eoArchivo\ViewModel\obj\Debug\ViewModel.csproj.CopyComplete

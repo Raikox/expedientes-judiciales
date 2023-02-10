@@ -1,0 +1,293 @@
+﻿<UserControl x:Class="View.ProcesosJudiciales"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             mc:Ignorable="d" 
+             Background="{DynamicResource MaterialDesignPaper}"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Medium"
+             TextElement.FontSize="14"
+             FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" d:DesignWidth="1057">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="631*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:ColorZone         
+            materialDesign:ShadowAssist.ShadowDepth="Depth1"
+	        materialDesign:ShadowAssist.ShadowEdges="Bottom"
+	        VerticalAlignment="Stretch" Margin="14" Background="#FF9E9E9E">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Margin="18,0,0,0" FontSize="18" Height="20">PROCESOS JUDICIALES</TextBlock>
+                    <materialDesign:PackIcon Kind="ScaleBalance" HorizontalAlignment="Right" Height="24" Width="24" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Margin="10,0,0,0" />
+                </StackPanel>
+            </materialDesign:ColorZone>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <Grid  >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="411*"/>
+                    <RowDefinition Height="205*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500*"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <materialDesign:Card VerticalAlignment="Stretch" Margin="8,0,0,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="203*"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                        <StackPanel Margin="0" Orientation="Horizontal" Grid.Row="2">
+                            <Grid Margin="10,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Button Style="{DynamicResource MaterialDesignToolButton}">
+                                    <materialDesign:PackIcon Kind="Magnify"  />
+                                </Button>
+                                <TextBox x:Name="txtBusqueda" Grid.Column="1" MinWidth="200" Margin="8,0,0,0"
+						            VerticalAlignment="Center" materialDesign:HintAssist.Hint="Inicie una búsqueda."
+						            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+						            BorderThickness="0" TextChanged="txtBusqueda_TextChanged" />
+                            </Grid>
+                            <RadioButton x:Name="rbnNumero" Content="N° de expediente" VerticalAlignment="Center" Margin="5,0,0,0"
+	                            Style="{StaticResource MaterialDesignRadioButton}" GroupName="grupoFiltro" IsChecked="True" />
+                            <RadioButton x:Name="rbnDemandante" Content="Demandante"
+                        VerticalAlignment="Center"
+	                    Style="{StaticResource MaterialDesignRadioButton}" GroupName="grupoFiltro" Margin="10,0,0,0" />
+                            <RadioButton x:Name="rbnDemandado" Content="Demandado"
+                        VerticalAlignment="Center"
+	                    Style="{StaticResource MaterialDesignRadioButton}" GroupName="grupoFiltro" Margin="10,0,0,0" />
+                            <RadioButton x:Name="rbnAval" Content="Aval"
+                        VerticalAlignment="Center"
+	                    Style="{StaticResource MaterialDesignRadioButton}" GroupName="grupoFiltro" Margin="10,0,0,0" />
+
+                        </StackPanel>
+                        <StackPanel Margin="0" Orientation="Horizontal">
+                            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15,0,0,5" FontSize="16" >Seleccione un proceso judicial</TextBlock>
+                        </StackPanel>
+                        <DataGrid x:Name="tblExpedientes" Margin="10,8,10,4" Grid.Row="3" SelectionChanged="tblExpedientes_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False" Height="438" RowHeight="32">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding exp_id}" />
+                                <DataGridTextColumn Header="ID DEMANDANTE" Binding="{Binding rto_id}" />
+                                <DataGridTextColumn Header="ID MATERIA" Binding="{Binding mra_id}"  />
+                                <DataGridTextColumn Header="ID JUZGADO" Binding="{Binding jdo_id}" />
+                                <DataGridTextColumn Header="ID CAJA" Binding="{Binding cja_id}" />
+                                <DataGridTextColumn Header="ORDEN" Binding="{Binding exp_orden}" />
+                                <DataGridTextColumn Header="N° EXPEDIENTE" Binding="{Binding exp_numero}" />
+                                <DataGridTextColumn Header="DEMANDANTE" Binding="{Binding demandante}" Width="240"/>
+                                <DataGridTextColumn Header="MATERIA" Binding="{Binding mra_nombre}" Width="240"/>
+                                <DataGridTextColumn Header="JUZGADO" Binding="{Binding jdo_nombre}" Width="240"/>
+                                <DataGridTemplateColumn>                                    
+                                    <DataGridTemplateColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="ACCION" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.HeaderTemplate>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button x:Name="btnEditar" Style="{StaticResource MaterialDesignFlatButton}" Click="btnEditar_Click" Margin="0,-2,10,0" Height="24" VerticalAlignment="Center" >
+                                                    <materialDesign:PackIcon Kind="Pencil"  Foreground="Black"/>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>                                    
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="810*"/>
+                                <ColumnDefinition Width="217*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="0" Orientation="Horizontal">
+                                <Label Content="Total expedientes:" Margin="10,10,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBox x:Name="txtTotalExpedientes" TextWrapping="Wrap" Width="40" Margin="5,10,0,0" IsEnabled="False" Background="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                                <Label Content="Total" Margin="20,10,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <ComboBox x:Name="cbxEntidadesFinancieras" Width="200" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0"
+                                         Style="{StaticResource MaterialDesignFloatingHintComboBox}" DisplayMemberPath="ef_nombre" SelectedValuePath="ef_id" SelectionChanged="cbxEntidad_SelectionChanged" Padding="6,6,0,6"/>
+                                <Label Content=":" Margin="0,10,0,0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBox x:Name="txtTotalEntidad" TextWrapping="Wrap" Width="40" Margin="5,10,0,0" IsEnabled="False" Background="White" VerticalAlignment="Center" TextAlignment="Center"/>
+                            </StackPanel>
+                            <Button x:Name="btnNuevo" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Nuevo Registro" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" Click="btnNuevo_Click">
+                                <materialDesign:PackIcon Width="24" Height="24" Kind="plus" />
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+
+                <materialDesign:Card	        
+	         VerticalAlignment="Stretch" Margin="8,0" Grid.Column="1">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Detalle Expediente" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                        <Label Content="N° de expediente:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtExpediente" Margin="15,0,0,0" Grid.Row="3" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" HorizontalAlignment="Left" Background="White" IsEnabled="False"/>
+                        <Label Content="Demandante:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtDemandante" Margin="15,0,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" HorizontalAlignment="Left" Background="White"  IsEnabled="False"/>
+                        <Label Content="Demandado:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" VerticalAlignment="Center"/>
+                        <ListBox x:Name="lstDemandado" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="7" Width="266" MinHeight="65" VerticalAlignment="Top" />
+                        <Label Content="Avales:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="8" VerticalAlignment="Center"/>
+                        <ListBox x:Name="lstAval" HorizontalAlignment="Left" Margin="15,0,0,0" Grid.Row="9" Width="266" VerticalAlignment="Top" MinHeight="65"/>
+                        <Label Content="Materia:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="10" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtMateria" Margin="15,0,0,0" Grid.Row="11" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" HorizontalAlignment="Left" Background="White"  IsEnabled="False"/>
+                        <Label Content="Juzgado:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="12" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtJuzgado" Margin="15,0,0,0" Grid.Row="13" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" HorizontalAlignment="Left" Background="White" IsEnabled="False"/>
+                    </Grid>
+
+                </materialDesign:Card>
+                <materialDesign:Card VerticalAlignment="Stretch" Margin="8,8,0,8" Grid.Row="1">
+                    <materialDesign:Transitioner AutoApplyTransitionOrigins="True" SelectedIndex="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="120*"/>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Historial Estados" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                            <Separator Grid.Row="1" Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                            <DataGrid x:Name="tblEstado" Margin="10,8,10,10" Grid.Row="2" AutoGenerateColumns="False" Height="187" RowHeight="32">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="FECHA" Binding="{Binding ee_fecha, StringFormat=\{0:dd/MM/yy\}}" />
+                                    <DataGridTextColumn Header="ESTADO" Binding="{Binding edo_nombre}" Width="250" MinWidth="150" />
+                                    <DataGridTextColumn Header="MOTIVO" Binding="{Binding ee_motivo}" Width="300" MinWidth="150" />
+                                    <DataGridTextColumn Header="PERSONAL" Binding="{Binding prl_nombres}" Width="300" MinWidth="200" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button 
+                                    Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Historal Ubicación"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Bottom" Margin="0,0,10,0">
+                                <materialDesign:PackIcon
+		                            Width="24"
+		                            Height="24"
+		                            Kind="SwapHorizontal" Foreground="#FF9E9E9E" />
+                            </Button>
+                            <Button x:Name="btnNuevoEstado" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                            ToolTip="Asignar Estado" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" Click="btnNuevoEstado_Click" Grid.Row="3">
+                                <materialDesign:PackIcon Width="24" Height="24" Kind="plus" />
+                            </Button>
+                        </Grid>
+
+
+                        <Grid>
+                            <materialDesign:TransitioningContent OpeningEffect="{materialDesign:TransitionEffect ExpandIn}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="35*"/>
+                                        <RowDefinition Height="60"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Label Content="Historial Ubicación" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                                    <Separator Grid.Row="1" 
+                                     Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                                    <DataGrid x:Name="tblUbicacion" Margin="10,8,10,10" Grid.Row="2" AutoGenerateColumns="False" Height="198" RowHeight="32">
+                                        <DataGrid.Columns>
+                                            <DataGridTextColumn Header="FECHA" Binding="{Binding ea_fecha, StringFormat=\{0:dd/MM/yy\}}" />
+                                            <DataGridTextColumn Header="AMBIENTE" Binding="{Binding abt_nombre}" Width="250" MinWidth="150" />
+                                            <DataGridTextColumn Header="MOTIVO" Binding="{Binding ea_motivo}" Width="300" MinWidth="150" />                                            
+                                            <DataGridTextColumn Header="PERSONAL" Binding="{Binding prl_nombre}" Width="300" MinWidth="200" />
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                    <Button 
+                                    Command="{x:Static materialDesign:Transitioner.MovePreviousCommand}"
+                                    Style="{StaticResource MaterialDesignFlatButton}"
+                                    ToolTip="Historial Estados"
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Bottom" Margin="0,0,10,0">
+                                        <materialDesign:PackIcon
+		                            Width="24"
+		                            Height="24"
+		                            Kind="SwapHorizontal" Foreground="#FF9E9E9E" />
+                                    </Button>
+                                    <Button x:Name="btnNuevoAmbiente" Style="{StaticResource MaterialDesignFloatingActionLightButton}" 
+                                    ToolTip="Asignar Ambiente" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,10" Width="50" Height="50" Background="#FF9E9E9E" BorderBrush="#FF9E9E9E" Foreground="#DDFFFFFF" Click="btnNuevoAmbiente_Click" Grid.Row="3">
+                                        <materialDesign:PackIcon Width="24" Height="24" Kind="plus" />
+                                    </Button>
+                                </Grid>
+                            </materialDesign:TransitioningContent>
+                        </Grid>
+
+                    </materialDesign:Transitioner>
+                </materialDesign:Card>
+                <materialDesign:Card	        
+	         VerticalAlignment="Stretch" Margin="8" Grid.Row="1" Grid.Column="1">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Ubicación Expediente" Margin="10,0,0,0" HorizontalAlignment="Left" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Separator Grid.Row="1" 
+                    Style="{StaticResource MaterialDesignDarkSeparator}" Height="Auto" Margin="8,0"/>
+                        <WrapPanel Grid.Row="2">
+                            <Label Content="Caja:" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtCaja" TextWrapping="Wrap" Width="40" Margin="5,0,0,0" IsEnabled="False" Background="White" VerticalAlignment="Top" TextAlignment="Center"/>
+                            <Label Content="Orden:" HorizontalAlignment="Left" Margin="50,5,0,0" VerticalAlignment="Center"/>
+                            <TextBox x:Name="txtOrden" TextWrapping="Wrap" Width="40" Margin="5,0,0,0" IsEnabled="False" Background="White" VerticalAlignment="Top" TextAlignment="Center"/>
+                        </WrapPanel>
+                        <Label Content="Ambiente:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtAmbiente" Margin="15,0,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" HorizontalAlignment="Left" Background="White" IsEnabled="False"/>
+                        <Label Content="Cliente:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtEntidad" Margin="15,0,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" HorizontalAlignment="Left" Background="White"  IsEnabled="False"/>
+                        <Label Content="Color:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="7" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtColor" Margin="15,0,0,0" Grid.Row="8" TextWrapping="Wrap" VerticalAlignment="Top" Width="229" HorizontalAlignment="Left"  IsEnabled="False"/>
+                    </Grid>
+
+                </materialDesign:Card>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+    
+</UserControl>

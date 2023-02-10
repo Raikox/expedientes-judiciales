@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eoExpedientesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ambiente_abt">
+    <Key>
+      <PropertyRef Name="abt_id" />
+    </Key>
+    <Property Name="abt_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="abt_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="abt_descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="expediente_ambiente_ea" Relationship="Self.FK__expedient__abt_i__4D94879B" FromRole="ambiente_abt" ToRole="expediente_ambiente_ea" />
+  </EntityType>
+  <EntityType Name="caja_cja">
+    <Key>
+      <PropertyRef Name="cja_id" />
+    </Key>
+    <Property Name="cja_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cja_numero" Type="Int32" Nullable="false" />
+    <Property Name="rto_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="registro_rto" Relationship="Self.FK__caja_cja__rto_id__33D4B598" FromRole="caja_cja" ToRole="registro_rto" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__cja_i__398D8EEE" FromRole="caja_cja" ToRole="expediente_exp" />
+  </EntityType>
+  <EntityType Name="ciudad_cdd">
+    <Key>
+      <PropertyRef Name="cdd_id" />
+    </Key>
+    <Property Name="cdd_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cdd_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="juzgado_jdo" Relationship="Self.FK__juzgado_j__cdd_i__2F10007B" FromRole="ciudad_cdd" ToRole="juzgado_jdo" />
+  </EntityType>
+  <EntityType Name="estado_edo">
+    <Key>
+      <PropertyRef Name="edo_id" />
+    </Key>
+    <Property Name="edo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="edo_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="edo_descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="expediente_estado_ee" Relationship="Self.FK__expedient__edo_i__46E78A0C" FromRole="estado_edo" ToRole="expediente_estado_ee" />
+  </EntityType>
+  <EntityType Name="expediente_ambiente_ea">
+    <Key>
+      <PropertyRef Name="ea_id" />
+    </Key>
+    <Property Name="ea_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ea_fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ea_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="exp_id" Type="Int32" Nullable="false" />
+    <Property Name="abt_id" Type="Int32" Nullable="false" />
+    <Property Name="prl_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ambiente_abt" Relationship="Self.FK__expedient__abt_i__4D94879B" FromRole="expediente_ambiente_ea" ToRole="ambiente_abt" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__exp_i__4CA06362" FromRole="expediente_ambiente_ea" ToRole="expediente_exp" />
+    <NavigationProperty Name="personal_prl" Relationship="Self.FK__expedient__prl_i__4E88ABD4" FromRole="expediente_ambiente_ea" ToRole="personal_prl" />
+  </EntityType>
+  <EntityType Name="expediente_aval_ea">
+    <Key>
+      <PropertyRef Name="ea_id" />
+    </Key>
+    <Property Name="ea_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exp_id" Type="Int32" Nullable="false" />
+    <Property Name="rto_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__exp_i__403A8C7D" FromRole="expediente_aval_ea" ToRole="expediente_exp" />
+    <NavigationProperty Name="registro_rto" Relationship="Self.FK__expedient__rto_i__412EB0B6" FromRole="expediente_aval_ea" ToRole="registro_rto" />
+  </EntityType>
+  <EntityType Name="expediente_demandado_ed">
+    <Key>
+      <PropertyRef Name="ed_id" />
+    </Key>
+    <Property Name="ed_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exp_id" Type="Int32" Nullable="false" />
+    <Property Name="rto_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__exp_i__3C69FB99" FromRole="expediente_demandado_ed" ToRole="expediente_exp" />
+    <NavigationProperty Name="registro_rto" Relationship="Self.FK__expedient__rto_i__3D5E1FD2" FromRole="expediente_demandado_ed" ToRole="registro_rto" />
+  </EntityType>
+  <EntityType Name="expediente_estado_ee">
+    <Key>
+      <PropertyRef Name="ee_id" />
+    </Key>
+    <Property Name="ee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ee_fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ee_motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="exp_id" Type="Int32" Nullable="false" />
+    <Property Name="edo_id" Type="Int32" Nullable="false" />
+    <Property Name="prl_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="estado_edo" Relationship="Self.FK__expedient__edo_i__46E78A0C" FromRole="expediente_estado_ee" ToRole="estado_edo" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__exp_i__45F365D3" FromRole="expediente_estado_ee" ToRole="expediente_exp" />
+    <NavigationProperty Name="personal_prl" Relationship="Self.FK__expedient__prl_i__47DBAE45" FromRole="expediente_estado_ee" ToRole="personal_prl" />
+  </EntityType>
+  <EntityType Name="expediente_exp">
+    <Key>
+      <PropertyRef Name="exp_id" />
+    </Key>
+    <Property Name="exp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="exp_numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="exp_orden" Type="Int32" Nullable="false" />
+    <Property Name="rto_id" Type="Int32" Nullable="false" />
+    <Property Name="mra_id" Type="Int32" Nullable="false" />
+    <Property Name="jdo_id" Type="Int32" Nullable="false" />
+    <Property Name="cja_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="caja_cja" Relationship="Self.FK__expedient__cja_i__398D8EEE" FromRole="expediente_exp" ToRole="caja_cja" />
+    <NavigationProperty Name="expediente_ambiente_ea" Relationship="Self.FK__expedient__exp_i__4CA06362" FromRole="expediente_exp" ToRole="expediente_ambiente_ea" />
+    <NavigationProperty Name="expediente_aval_ea" Relationship="Self.FK__expedient__exp_i__403A8C7D" FromRole="expediente_exp" ToRole="expediente_aval_ea" />
+    <NavigationProperty Name="expediente_demandado_ed" Relationship="Self.FK__expedient__exp_i__3C69FB99" FromRole="expediente_exp" ToRole="expediente_demandado_ed" />
+    <NavigationProperty Name="expediente_estado_ee" Relationship="Self.FK__expedient__exp_i__45F365D3" FromRole="expediente_exp" ToRole="expediente_estado_ee" />
+    <NavigationProperty Name="juzgado_jdo" Relationship="Self.FK__expedient__jdo_i__38996AB5" FromRole="expediente_exp" ToRole="juzgado_jdo" />
+    <NavigationProperty Name="materia_mra" Relationship="Self.FK__expedient__mra_i__37A5467C" FromRole="expediente_exp" ToRole="materia_mra" />
+    <NavigationProperty Name="registro_rto" Relationship="Self.FK__expedient__rto_i__36B12243" FromRole="expediente_exp" ToRole="registro_rto" />
+  </EntityType>
+  <EntityType Name="juzgado_jdo">
+    <Key>
+      <PropertyRef Name="jdo_id" />
+    </Key>
+    <Property Name="jdo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="jdo_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cdd_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ciudad_cdd" Relationship="Self.FK__juzgado_j__cdd_i__2F10007B" FromRole="juzgado_jdo" ToRole="ciudad_cdd" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__jdo_i__38996AB5" FromRole="juzgado_jdo" ToRole="expediente_exp" />
+  </EntityType>
+  <EntityType Name="materia_mra">
+    <Key>
+      <PropertyRef Name="mra_id" />
+    </Key>
+    <Property Name="mra_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mra_nombre" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__mra_i__37A5467C" FromRole="materia_mra" ToRole="expediente_exp" />
+  </EntityType>
+  <EntityType Name="personal_prl">
+    <Key>
+      <PropertyRef Name="prl_id" />
+    </Key>
+    <Property Name="prl_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prl_apellidos" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="prl_nombres" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="prl_dni" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="prl_celular" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="prl_correo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="expediente_ambiente_ea" Relationship="Self.FK__expedient__prl_i__4E88ABD4" FromRole="personal_prl" ToRole="expediente_ambiente_ea" />
+    <NavigationProperty Name="expediente_estado_ee" Relationship="Self.FK__expedient__prl_i__47DBAE45" FromRole="personal_prl" ToRole="expediente_estado_ee" />
+    <NavigationProperty Name="sesion_ssn" Relationship="Self.FK__sesion_ss__prl_i__25869641" FromRole="personal_prl" ToRole="sesion_ssn" />
+  </EntityType>
+  <EntityType Name="registro_rto">
+    <Key>
+      <PropertyRef Name="rto_id" />
+    </Key>
+    <Property Name="rto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rto_apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rto_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="rto_color" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tpo_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="caja_cja" Relationship="Self.FK__caja_cja__rto_id__33D4B598" FromRole="registro_rto" ToRole="caja_cja" />
+    <NavigationProperty Name="expediente_aval_ea" Relationship="Self.FK__expedient__rto_i__412EB0B6" FromRole="registro_rto" ToRole="expediente_aval_ea" />
+    <NavigationProperty Name="expediente_demandado_ed" Relationship="Self.FK__expedient__rto_i__3D5E1FD2" FromRole="registro_rto" ToRole="expediente_demandado_ed" />
+    <NavigationProperty Name="expediente_exp" Relationship="Self.FK__expedient__rto_i__36B12243" FromRole="registro_rto" ToRole="expediente_exp" />
+    <NavigationProperty Name="tipo_tpo" Relationship="Self.FK__registro___tpo_i__2A4B4B5E" FromRole="registro_rto" ToRole="tipo_tpo" />
+  </EntityType>
+  <EntityType Name="sesion_ssn">
+    <Key>
+      <PropertyRef Name="ssn_id" />
+    </Key>
+    <Property Name="ssn_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ssn_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ssn_password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ssn_tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="prl_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="personal_prl" Relationship="Self.FK__sesion_ss__prl_i__25869641" FromRole="sesion_ssn" ToRole="personal_prl" />
+  </EntityType>
+  <EntityType Name="tipo_tpo">
+    <Key>
+      <PropertyRef Name="tpo_id" />
+    </Key>
+    <Property Name="tpo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tpo_nombre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="tpo_numero" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="registro_rto" Relationship="Self.FK__registro___tpo_i__2A4B4B5E" FromRole="tipo_tpo" ToRole="registro_rto" />
+  </EntityType>
+  <Association Name="FK__expedient__abt_i__4D94879B">
+    <End Role="ambiente_abt" Type="Self.ambiente_abt" Multiplicity="1" />
+    <End Role="expediente_ambiente_ea" Type="Self.expediente_ambiente_ea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ambiente_abt">
+        <PropertyRef Name="abt_id" />
+      </Principal>
+      <Dependent Role="expediente_ambiente_ea">
+        <PropertyRef Name="abt_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__caja_cja__rto_id__33D4B598">
+    <End Role="registro_rto" Type="Self.registro_rto" Multiplicity="1" />
+    <End Role="caja_cja" Type="Self.caja_cja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro_rto">
+        <PropertyRef Name="rto_id" />
+      </Principal>
+      <Dependent Role="caja_cja">
+        <PropertyRef Name="rto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__cja_i__398D8EEE">
+    <End Role="caja_cja" Type="Self.caja_cja" Multiplicity="1" />
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caja_cja">
+        <PropertyRef Name="cja_id" />
+      </Principal>
+      <Dependent Role="expediente_exp">
+        <PropertyRef Name="cja_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__juzgado_j__cdd_i__2F10007B">
+    <End Role="ciudad_cdd" Type="Self.ciudad_cdd" Multiplicity="1" />
+    <End Role="juzgado_jdo" Type="Self.juzgado_jdo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ciudad_cdd">
+        <PropertyRef Name="cdd_id" />
+      </Principal>
+      <Dependent Role="juzgado_jdo">
+        <PropertyRef Name="cdd_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__edo_i__46E78A0C">
+    <End Role="estado_edo" Type="Self.estado_edo" Multiplicity="1" />
+    <End Role="expediente_estado_ee" Type="Self.expediente_estado_ee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado_edo">
+        <PropertyRef Name="edo_id" />
+      </Principal>
+      <Dependent Role="expediente_estado_ee">
+        <PropertyRef Name="edo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__exp_i__4CA06362">
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="1" />
+    <End Role="expediente_ambiente_ea" Type="Self.expediente_ambiente_ea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="expediente_exp">
+        <PropertyRef Name="exp_id" />
+      </Principal>
+      <Dependent Role="expediente_ambiente_ea">
+        <PropertyRef Name="exp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__prl_i__4E88ABD4">
+    <End Role="personal_prl" Type="Self.personal_prl" Multiplicity="1" />
+    <End Role="expediente_ambiente_ea" Type="Self.expediente_ambiente_ea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personal_prl">
+        <PropertyRef Name="prl_id" />
+      </Principal>
+      <Dependent Role="expediente_ambiente_ea">
+        <PropertyRef Name="prl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__exp_i__403A8C7D">
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="1" />
+    <End Role="expediente_aval_ea" Type="Self.expediente_aval_ea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="expediente_exp">
+        <PropertyRef Name="exp_id" />
+      </Principal>
+      <Dependent Role="expediente_aval_ea">
+        <PropertyRef Name="exp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__rto_i__412EB0B6">
+    <End Role="registro_rto" Type="Self.registro_rto" Multiplicity="1" />
+    <End Role="expediente_aval_ea" Type="Self.expediente_aval_ea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro_rto">
+        <PropertyRef Name="rto_id" />
+      </Principal>
+      <Dependent Role="expediente_aval_ea">
+        <PropertyRef Name="rto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__exp_i__3C69FB99">
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="1" />
+    <End Role="expediente_demandado_ed" Type="Self.expediente_demandado_ed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="expediente_exp">
+        <PropertyRef Name="exp_id" />
+      </Principal>
+      <Dependent Role="expediente_demandado_ed">
+        <PropertyRef Name="exp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__rto_i__3D5E1FD2">
+    <End Role="registro_rto" Type="Self.registro_rto" Multiplicity="1" />
+    <End Role="expediente_demandado_ed" Type="Self.expediente_demandado_ed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro_rto">
+        <PropertyRef Name="rto_id" />
+      </Principal>
+      <Dependent Role="expediente_demandado_ed">
+        <PropertyRef Name="rto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__exp_i__45F365D3">
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="1" />
+    <End Role="expediente_estado_ee" Type="Self.expediente_estado_ee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="expediente_exp">
+        <PropertyRef Name="exp_id" />
+      </Principal>
+      <Dependent Role="expediente_estado_ee">
+        <PropertyRef Name="exp_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__prl_i__47DBAE45">
+    <End Role="personal_prl" Type="Self.personal_prl" Multiplicity="1" />
+    <End Role="expediente_estado_ee" Type="Self.expediente_estado_ee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personal_prl">
+        <PropertyRef Name="prl_id" />
+      </Principal>
+      <Dependent Role="expediente_estado_ee">
+        <PropertyRef Name="prl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__jdo_i__38996AB5">
+    <End Role="juzgado_jdo" Type="Self.juzgado_jdo" Multiplicity="1" />
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="juzgado_jdo">
+        <PropertyRef Name="jdo_id" />
+      </Principal>
+      <Dependent Role="expediente_exp">
+        <PropertyRef Name="jdo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__mra_i__37A5467C">
+    <End Role="materia_mra" Type="Self.materia_mra" Multiplicity="1" />
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="materia_mra">
+        <PropertyRef Name="mra_id" />
+      </Principal>
+      <Dependent Role="expediente_exp">
+        <PropertyRef Name="mra_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__expedient__rto_i__36B12243">
+    <End Role="registro_rto" Type="Self.registro_rto" Multiplicity="1" />
+    <End Role="expediente_exp" Type="Self.expediente_exp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="registro_rto">
+        <PropertyRef Name="rto_id" />
+      </Principal>
+      <Dependent Role="expediente_exp">
+        <PropertyRef Name="rto_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sesion_ss__prl_i__25869641">
+    <End Role="personal_prl" Type="Self.personal_prl" Multiplicity="1" />
+    <End Role="sesion_ssn" Type="Self.sesion_ssn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="personal_prl">
+        <PropertyRef Name="prl_id" />
+      </Principal>
+      <Dependent Role="sesion_ssn">
+        <PropertyRef Name="prl_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__registro___tpo_i__2A4B4B5E">
+    <End Role="tipo_tpo" Type="Self.tipo_tpo" Multiplicity="1" />
+    <End Role="registro_rto" Type="Self.registro_rto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_tpo">
+        <PropertyRef Name="tpo_id" />
+      </Principal>
+      <Dependent Role="registro_rto">
+        <PropertyRef Name="tpo_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eoExpedientesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ambiente_abt" EntityType="Self.ambiente_abt" />
+    <EntitySet Name="caja_cja" EntityType="Self.caja_cja" />
+    <EntitySet Name="ciudad_cdd" EntityType="Self.ciudad_cdd" />
+    <EntitySet Name="estado_edo" EntityType="Self.estado_edo" />
+    <EntitySet Name="expediente_ambiente_ea" EntityType="Self.expediente_ambiente_ea" />
+    <EntitySet Name="expediente_aval_ea" EntityType="Self.expediente_aval_ea" />
+    <EntitySet Name="expediente_demandado_ed" EntityType="Self.expediente_demandado_ed" />
+    <EntitySet Name="expediente_estado_ee" EntityType="Self.expediente_estado_ee" />
+    <EntitySet Name="expediente_exp" EntityType="Self.expediente_exp" />
+    <EntitySet Name="juzgado_jdo" EntityType="Self.juzgado_jdo" />
+    <EntitySet Name="materia_mra" EntityType="Self.materia_mra" />
+    <EntitySet Name="personal_prl" EntityType="Self.personal_prl" />
+    <EntitySet Name="registro_rto" EntityType="Self.registro_rto" />
+    <EntitySet Name="sesion_ssn" EntityType="Self.sesion_ssn" />
+    <EntitySet Name="tipo_tpo" EntityType="Self.tipo_tpo" />
+    <AssociationSet Name="FK__expedient__abt_i__4D94879B" Association="Self.FK__expedient__abt_i__4D94879B">
+      <End Role="ambiente_abt" EntitySet="ambiente_abt" />
+      <End Role="expediente_ambiente_ea" EntitySet="expediente_ambiente_ea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__caja_cja__rto_id__33D4B598" Association="Self.FK__caja_cja__rto_id__33D4B598">
+      <End Role="registro_rto" EntitySet="registro_rto" />
+      <End Role="caja_cja" EntitySet="caja_cja" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__cja_i__398D8EEE" Association="Self.FK__expedient__cja_i__398D8EEE">
+      <End Role="caja_cja" EntitySet="caja_cja" />
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__juzgado_j__cdd_i__2F10007B" Association="Self.FK__juzgado_j__cdd_i__2F10007B">
+      <End Role="ciudad_cdd" EntitySet="ciudad_cdd" />
+      <End Role="juzgado_jdo" EntitySet="juzgado_jdo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__edo_i__46E78A0C" Association="Self.FK__expedient__edo_i__46E78A0C">
+      <End Role="estado_edo" EntitySet="estado_edo" />
+      <End Role="expediente_estado_ee" EntitySet="expediente_estado_ee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__exp_i__4CA06362" Association="Self.FK__expedient__exp_i__4CA06362">
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+      <End Role="expediente_ambiente_ea" EntitySet="expediente_ambiente_ea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__prl_i__4E88ABD4" Association="Self.FK__expedient__prl_i__4E88ABD4">
+      <End Role="personal_prl" EntitySet="personal_prl" />
+      <End Role="expediente_ambiente_ea" EntitySet="expediente_ambiente_ea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__exp_i__403A8C7D" Association="Self.FK__expedient__exp_i__403A8C7D">
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+      <End Role="expediente_aval_ea" EntitySet="expediente_aval_ea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__rto_i__412EB0B6" Association="Self.FK__expedient__rto_i__412EB0B6">
+      <End Role="registro_rto" EntitySet="registro_rto" />
+      <End Role="expediente_aval_ea" EntitySet="expediente_aval_ea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__exp_i__3C69FB99" Association="Self.FK__expedient__exp_i__3C69FB99">
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+      <End Role="expediente_demandado_ed" EntitySet="expediente_demandado_ed" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__rto_i__3D5E1FD2" Association="Self.FK__expedient__rto_i__3D5E1FD2">
+      <End Role="registro_rto" EntitySet="registro_rto" />
+      <End Role="expediente_demandado_ed" EntitySet="expediente_demandado_ed" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__exp_i__45F365D3" Association="Self.FK__expedient__exp_i__45F365D3">
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+      <End Role="expediente_estado_ee" EntitySet="expediente_estado_ee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__prl_i__47DBAE45" Association="Self.FK__expedient__prl_i__47DBAE45">
+      <End Role="personal_prl" EntitySet="personal_prl" />
+      <End Role="expediente_estado_ee" EntitySet="expediente_estado_ee" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__jdo_i__38996AB5" Association="Self.FK__expedient__jdo_i__38996AB5">
+      <End Role="juzgado_jdo" EntitySet="juzgado_jdo" />
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__mra_i__37A5467C" Association="Self.FK__expedient__mra_i__37A5467C">
+      <End Role="materia_mra" EntitySet="materia_mra" />
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__expedient__rto_i__36B12243" Association="Self.FK__expedient__rto_i__36B12243">
+      <End Role="registro_rto" EntitySet="registro_rto" />
+      <End Role="expediente_exp" EntitySet="expediente_exp" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sesion_ss__prl_i__25869641" Association="Self.FK__sesion_ss__prl_i__25869641">
+      <End Role="personal_prl" EntitySet="personal_prl" />
+      <End Role="sesion_ssn" EntitySet="sesion_ssn" />
+    </AssociationSet>
+    <AssociationSet Name="FK__registro___tpo_i__2A4B4B5E" Association="Self.FK__registro___tpo_i__2A4B4B5E">
+      <End Role="tipo_tpo" EntitySet="tipo_tpo" />
+      <End Role="registro_rto" EntitySet="registro_rto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
